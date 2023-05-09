@@ -24,5 +24,18 @@ public class Main {
                 """);
         Scanner scanner = new Scanner(System.in);
         int keuze = scanner.nextInt();
+
+        switch (keuze) {
+            case 1:
+                break;
+            case 2:
+                sluitApplicatie();
+                break;
+        }
+    }
+
+    public static void sluitApplicatie(){
+        System.out.println("BEDANKT, EN TOT ZIENS!");
+        System.exit(0);
     }
 }

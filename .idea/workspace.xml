@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a8e2db7-f538-4e01-bbcb-f34f1d7659ed" name="Changes" comment="initial push">
+    <list default="true" id="9a8e2db7-f538-4e01-bbcb-f34f1d7659ed" name="Changes" comment="Klein startscherm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
@@ -64,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683634820541</updated>
-      <workItem from="1683634821571" duration="1360000" />
+      <workItem from="1683634821571" duration="2515000" />
     </task>
     <task id="LOCAL-00001" summary="Initial push">
       <created>1683635310123</created>
@@ -80,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683635721906</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Klein startscherm">
+      <created>1683636428054</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683636428054</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +96,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial push" />
     <MESSAGE value="initial push" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial push" />
+    <MESSAGE value="Klein startscherm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Klein startscherm" />
   </component>
 </project>
