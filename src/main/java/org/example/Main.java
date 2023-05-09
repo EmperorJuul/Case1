@@ -5,12 +5,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        while (true){
+
+        DataLoader d = new DataLoader();
+
+        while (true) {
             startscherm();
         }
     }
 
-    public static void startscherm(){
+    public static void startscherm() {
         System.out.println("""
                     WELKOM OP BELASTINGPLAATS    
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -34,7 +37,7 @@ public class Main {
         }
     }
 
-    public static void sluitApplicatie(){
+    public static void sluitApplicatie() {
         System.out.println("BEDANKT, EN TOT ZIENS!");
         System.exit(0);
     }
