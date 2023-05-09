@@ -32,11 +32,16 @@ public class Main {
 
         switch (keuze) {
             case 1:
+                login();
                 break;
             case 2:
                 sluitApplicatie();
                 break;
         }
+    }
+
+    public static void login() {
+
     }
 
     public static void sluitApplicatie() {
