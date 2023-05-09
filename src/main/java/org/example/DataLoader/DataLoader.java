@@ -1,4 +1,4 @@
-package org.example;
+package org.example.DataLoader;
 
 import org.example.Dao.GebruikerDao;
 import org.example.Entiteiten.Gebruiker;
