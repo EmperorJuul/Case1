@@ -3,8 +3,8 @@ package org.example;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.example.DataLoader.DataLoader;
-import org.example.View.Startscherm;
+import org.example.dataloader.DataLoader;
+import org.example.view.Startscherm;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;

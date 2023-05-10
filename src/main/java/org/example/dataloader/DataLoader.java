@@ -1,7 +1,7 @@
-package org.example.DataLoader;
+package org.example.dataloader;
 
-import org.example.Dao.GebruikerDao;
-import org.example.Entiteiten.Gebruiker;
+import org.example.model.Dao.GebruikerDao;
+import org.example.model.Gebruiker;
 
 import static org.example.Main.em;
 

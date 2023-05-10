@@ -1,7 +1,7 @@
-package org.example.View;
+package org.example.view;
 
-import org.example.Entiteiten.Gebruiker;
 import org.example.Main;
+import org.example.model.Gebruiker;
 
 import static org.example.Main.scanner;
 
