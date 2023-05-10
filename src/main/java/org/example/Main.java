@@ -1,52 +1,36 @@
 package org.example;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 import org.example.DataLoader.DataLoader;
+import org.example.View.Startscherm;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
+    public static final Scanner scanner = new Scanner(System.in);
+    public static final EntityManager em = Persistence.createEntityManagerFactory("MySQL").createEntityManager();
+    public static final EntityTransaction transaction = em.getTransaction();
+
+
     public static void main(String[] args) {
 
+
         DataLoader d = new DataLoader();
+        Startscherm startscherm = new Startscherm();
+        startscherm.start();
+    }
 
-        while (true) {
-            startscherm();
+    public static void wait(int s) {
+        try {
+            TimeUnit.SECONDS.sleep(s);
+        } catch (InterruptedException ex) {
+            //TODO log exception
         }
     }
 
-    public static void startscherm() {
-        System.out.println("""
-                    WELKOM OP BELASTINGPLAATS    
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                X                               X
-                X   1. Log in                   X
-                X   2. Sluit applicatie         X
-                X                               X
-                X                               X
-                X                               X
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                """);
-        Scanner scanner = new Scanner(System.in);
-        int keuze = scanner.nextInt();
 
-        switch (keuze) {
-            case 1:
-                login();
-                break;
-            case 2:
-                sluitApplicatie();
-                break;
-        }
-    }
-
-    public static void login() {
-        System.out.println("test");
-
-    }
-
-    public static void sluitApplicatie() {
-        System.out.println("BEDANKT, EN TOT ZIENS!");
-        System.exit(0);
-    }
 }

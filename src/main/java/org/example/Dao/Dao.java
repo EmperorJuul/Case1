@@ -2,21 +2,23 @@ package org.example.Dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import lombok.Data;
 
-public abstract class Dao<T> {
+import java.lang.reflect.ParameterizedType;
+
+@Data
+public abstract class Dao<T, I> {
 
     EntityManager em;
     EntityTransaction transaction;
 
-    public Dao() {
-        open();
+    public Dao(EntityManager em) {
+        this.em = em;
+        this.transaction = em.getTransaction();
     }
 
-
-    public void open() {
-        em = Persistence.createEntityManagerFactory("MySQL").createEntityManager();
-        transaction = em.getTransaction();
+    public T select(I i) {
+        return em.find(T(), i);
     }
 
     public void insert(T t) {
@@ -25,8 +27,9 @@ public abstract class Dao<T> {
         transaction.commit();
     }
 
-    public void close() {
-        em.close();
+    private Class<T> T() {
+        ParameterizedType thisDaoClass = (ParameterizedType) getClass().getGenericSuperclass();
+        return (Class<T>) thisDaoClass.getActualTypeArguments()[0];
     }
 
 }
