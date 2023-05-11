@@ -3,11 +3,14 @@ package org.example.view;
 import org.example.Main;
 import org.example.model.Advertentie;
 import org.example.model.Categorie;
-import org.example.model.Levering;
 import org.example.model.Soort;
 import org.example.model.dto.GebruikerDto;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.example.Main.scanner;
+import static org.example.view.Format.*;
 
 public class NieuweAdvertentie {
 
@@ -21,21 +24,19 @@ public class NieuweAdvertentie {
 
     public void nieuweAdvertentie() {
         while (true) {
-            System.out.println("""
-                    \n\n
-                           Nieuwe advertentie                      
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    X                               X
-                    X   1. Titel                    X
-                    X   2. Product/dienst           X
-                    X   3. Categorie                X
-                    X   4. Levering                 X
-                    X   5. Omschrijving             X
-                    X   6. Vraagprijs               X
-                    X                               X
-                    X                               X
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    """);
+
+            List<String> info = Arrays.asList("Titel", "Product/dienst", "Categorie", "Levering", "Omschrijving", "Vraagprijs");
+
+            printPreMenu("Nieuwe advertentie");
+
+            int teller = 1;
+            for (String item : info) {
+                System.out.println(formatOpties(teller, item));
+                teller++;
+            }
+
+            printPostMenu();
+
             int keuze = scanner.nextInt();
             scanner.nextLine();
 
@@ -67,21 +68,22 @@ public class NieuweAdvertentie {
         String titel = advertentie.getTitel() == null ? "" : advertentie.getTitel();
         System.out.printf("\nTitel (%s): ", titel);
         titel = scanner.nextLine();
-        advertentie.setTitel(titel);
+        if (!titel.isEmpty()) {
+            advertentie.setTitel(titel);
+        }
     }
 
     public void soort() {
-        System.out.printf("""
-                \n\n
-                (%s)                    
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                X                               X
-                X   1. Product                  X
-                X   2. Dienst                   X
-                X                               X
-                X                               X
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                """, advertentie.getSoort() == null ? "" : advertentie.getSoort().toString().toLowerCase());
+
+        printPreMenu(String.format("Huidige keuze: %s", advertentie.getSoort() == null ? "" : advertentie.getSoort().toString().toLowerCase()));
+
+        List<String> opties = Arrays.asList("Product", "Dienst");
+
+        printOpties(opties);
+
+        System.out.println(formatOpties(0, "Terug"));
+
+        printPostMenu();
 
         int keuze = scanner.nextInt();
         scanner.nextLine();
@@ -92,6 +94,8 @@ public class NieuweAdvertentie {
             case 2:
                 advertentie.setSoort(Soort.DIENST);
                 break;
+            case 0:
+                break;
             default:
                 System.out.println("\nOngeldige keuze");
                 Main.wait(1);
@@ -99,28 +103,13 @@ public class NieuweAdvertentie {
     }
 
     public void categorie() {
-        System.out.printf("""
-                 \n\n
-                (%s)                    
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                X                               X
-                """, advertentie.getCategorie() == null ? "" : advertentie.getCategorie().toString().toLowerCase());
 
+        printPreMenu(String.format("huidige keuze: %s", advertentie.getCategorie() == null ? "" : advertentie.getCategorie().toString().toLowerCase()));
 
-        int teller = 1;
-        for (Categorie categorie : Categorie.values()) {
-            String tekst = "X   ";
-            tekst += String.format("%d.%-26s", teller, categorie.toString().toLowerCase());
-            tekst += "X";
-            System.out.println(tekst);
-            teller++;
-        }
+        printOpties(Arrays.asList(Categorie.values()));
 
-        System.out.printf("""
-                X                               X
-                X                               X
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                """);
+        printPostMenu();
+
         int keuze = scanner.nextInt();
         scanner.nextLine();
         if (keuze > Categorie.values().length || keuze < 1) {
@@ -129,34 +118,21 @@ public class NieuweAdvertentie {
         } else {
             advertentie.setCategorie(Categorie.values()[keuze - 1]);
         }
+
+
     }
 
     public void levering() {
-        System.out.printf("""
-                 \n\n
-                (%s)                    
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                X                               X
-                """, advertentie.getLevering() == null ? "" : advertentie.getLevering().toString().toLowerCase());
+        printPreMenu(String.format("Huidige keuze: %s", advertentie.getLevering() == null ? "" : advertentie.getLevering().toString().toLowerCase()));
 
 
-        int teller = 1;
-        for (Levering levering : gebruiker.levering()) {
-            String tekst = "X   ";
-            tekst += String.format("%d.%-26s", teller, levering.toString().toLowerCase());
-            tekst += "X";
-            System.out.println(tekst);
-            teller++;
-        }
+        printOpties(gebruiker.levering());
 
-        System.out.printf("""
-                X                               X
-                X                               X
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                """);
+        printPostMenu();
 
         int keuze = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(
+        );
         if (keuze > gebruiker.levering().size() || keuze < 1) {
             System.out.println("\nOngeldige keuze");
             Main.wait(1);
@@ -165,4 +141,10 @@ public class NieuweAdvertentie {
         }
 
     }
+
+    public void omschrijving() {
+
+    }
+
+
 }
