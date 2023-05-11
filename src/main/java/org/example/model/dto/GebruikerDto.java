@@ -1,12 +1,19 @@
 package org.example.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.example.model.Levering;
 
 import java.util.List;
 
-public record GebruikerDto(
-        String email,
-        List<Levering> levering
-) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class GebruikerDto {
+
+
+    String email;
+    List<Levering> levering;
 
 }

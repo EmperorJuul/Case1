@@ -23,7 +23,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         DataLoader d = new DataLoader();
         Startscherm startscherm = new Startscherm();
         //startscherm.start();

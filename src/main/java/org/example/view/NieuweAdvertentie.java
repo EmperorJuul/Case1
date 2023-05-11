@@ -19,7 +19,7 @@ public class NieuweAdvertentie {
     Soort soort;
     Categorie categorie;
     Levering levering;
-    String omschrijvingl;
+    String omschrijving;
     int prijs;
     GebruikerDto gebruiker;
 
@@ -63,8 +63,9 @@ public class NieuweAdvertentie {
                             soort,
                             categorie,
                             levering,
-                            omschrijvingl,
+                            omschrijving,
                             prijs);
+                    System.out.println(advertentie);
 
                     break;
                 case 0:
@@ -77,11 +78,11 @@ public class NieuweAdvertentie {
     }
 
     public void titel() {
-        String titel = advertentie.getTitel() == null ? "" : advertentie.getTitel();
+        String titel = this.titel == null ? "" : this.titel;
         System.out.printf("\nTitel (%s): ", titel);
         titel = scanner.nextLine();
         if (!titel.isEmpty()) {
-            advertentie.setTitel(titel);
+            this.titel = titel;
         }
     }
 
@@ -89,7 +90,7 @@ public class NieuweAdvertentie {
 
         List<String> opties = Arrays.asList("Product", "Dienst");
 
-        printPreMenu(String.format("Huidige keuze: %s", advertentie.getSoort() == null ? "" : advertentie.getSoort().toString().toLowerCase()));
+        printPreMenu(String.format("Huidige keuze: %s", soort == null ? "" : soort.toString().toLowerCase()));
         printOpties(opties);
         printPostMenu();
 
@@ -97,10 +98,10 @@ public class NieuweAdvertentie {
         scanner.nextLine();
         switch (keuze) {
             case 1:
-                advertentie.setSoort(Soort.PRODUCT);
+                soort = Soort.PRODUCT;
                 break;
             case 2:
-                advertentie.setSoort(Soort.DIENST);
+                soort = Soort.DIENST;
                 break;
             case 0:
                 break;
@@ -112,7 +113,7 @@ public class NieuweAdvertentie {
 
     public void categorie() {
 
-        printPreMenu(String.format("huidige keuze: %s", advertentie.getCategorie() == null ? "" : advertentie.getCategorie().toString().toLowerCase()));
+        printPreMenu(String.format("huidige keuze: %s", categorie == null ? "" : categorie.toString().toLowerCase()));
         printOpties(Arrays.asList(Categorie.values()));
         printPostMenu();
 
@@ -122,7 +123,7 @@ public class NieuweAdvertentie {
             System.out.println("\nOngeldige keuze");
             Main.wait(1);
         } else {
-            advertentie.setCategorie(Categorie.values()[keuze - 1]);
+            categorie = Categorie.values()[keuze - 1];
         }
 
 
@@ -130,38 +131,38 @@ public class NieuweAdvertentie {
 
     public void levering() {
 
-        printPreMenu(String.format("Huidige keuze: %s", advertentie.getLevering() == null ? "" : advertentie.getLevering().toString().toLowerCase()));
-        printOpties(gebruiker.levering());
+        printPreMenu(String.format("Huidige keuze: %s", levering == null ? "" : levering.toString().toLowerCase()));
+        printOpties(gebruiker.getLevering());
         printPostMenu();
 
         int keuze = scanner.nextInt();
         scanner.nextLine(
         );
-        if (keuze > gebruiker.levering().size() || keuze < 1) {
+        if (keuze > gebruiker.getLevering().size() || keuze < 1) {
             System.out.println("\nOngeldige keuze");
             Main.wait(1);
         } else {
-            advertentie.setLevering(gebruiker.levering().get(keuze - 1));
+            levering = gebruiker.getLevering().get(keuze - 1);
         }
 
     }
 
     public void omschrijving() {
-        String omschrijving = advertentie.getOmschrijving() == null ? "" : advertentie.getOmschrijving();
+        String omschrijving = this.omschrijving == null ? "" : this.omschrijving;
 
 
         System.out.printf("\nOmschrijving (%s): ", omschrijving);
         omschrijving = scanner.nextLine();
         if (!omschrijving.isEmpty()) {
-            advertentie.setOmschrijving(omschrijving);
+            this.omschrijving = omschrijving;
         }
     }
 
     public void vraagprijs() {
-        int prijs = advertentie.getPrijs();
+        int prijs = this.prijs;
         System.out.printf("\nPrijs (%s): ", prijs);
         prijs = scanner.nextInt();
-        advertentie.setPrijs(prijs);
+        this.prijs = prijs;
     }
 
 
