@@ -1,16 +1,19 @@
 package org.example.view;
 
 import org.example.Main;
+import org.example.controller.GebruikerController;
 import org.example.model.Dao.GebruikerDao;
-import org.example.model.Gebruiker;
+import org.example.model.dto.GebruikerDto;
 
 import static org.example.Main.em;
 import static org.example.Main.scanner;
 
 public class Startscherm {
 
-    private static Gebruiker gebruiker;
+    private static GebruikerDto gebruiker;
     private GebruikerDao dao = new GebruikerDao(em);
+
+    private GebruikerController controller = new GebruikerController();
 
 
     public void start() {
@@ -54,13 +57,13 @@ public class Startscherm {
         System.out.printf("\nWACHTWOORD: ");
         String wachtwoord = scanner.next();
 
-        gebruiker = dao.select(gebruikersnaam);
+        gebruiker = controller.getGebruiker(gebruikersnaam);
 
         if (gebruiker == null) {
             System.out.println("\nGEEN GEBRUIKER GEVONDEN, PROBEER OPNIEUW");
             Main.wait(1);
             login();
-        } else if (wachtwoord.equals(gebruiker.getWachtwoord())) {
+        } else if (controller.checkWachtwoord(gebruiker, wachtwoord)) {
             System.out.printf("\nWELKOM %s", gebruikersnaam);
             Main.wait(1);
             Homepagina homepagina = new Homepagina(gebruiker);
