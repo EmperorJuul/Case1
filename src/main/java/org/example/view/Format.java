@@ -26,7 +26,7 @@ public class Format {
             System.out.println(formatOpties(teller, item.toString()));
             teller++;
         }
-
+        System.out.println(formatOpties(0, "Terug"));
     }
 
     public static void printPostMenu() {

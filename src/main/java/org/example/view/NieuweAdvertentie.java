@@ -1,9 +1,10 @@
 package org.example.view;
 
 import org.example.Main;
-import org.example.model.Advertentie;
 import org.example.model.Categorie;
+import org.example.model.Levering;
 import org.example.model.Soort;
+import org.example.model.dto.AdvertentieDto;
 import org.example.model.dto.GebruikerDto;
 
 import java.util.Arrays;
@@ -14,8 +15,12 @@ import static org.example.view.Format.*;
 
 public class NieuweAdvertentie {
 
-    Advertentie advertentie = new Advertentie();
-
+    String titel;
+    Soort soort;
+    Categorie categorie;
+    Levering levering;
+    String omschrijvingl;
+    int prijs;
     GebruikerDto gebruiker;
 
     public NieuweAdvertentie(GebruikerDto gebruiker) {
@@ -25,16 +30,10 @@ public class NieuweAdvertentie {
     public void nieuweAdvertentie() {
         while (true) {
 
-            List<String> info = Arrays.asList("Titel", "Product/dienst", "Categorie", "Levering", "Omschrijving", "Vraagprijs");
+            List<String> opties = Arrays.asList("Titel", "Product/dienst", "Categorie", "Levering", "Omschrijving", "Vraagprijs", "Opslaan");
 
             printPreMenu("Nieuwe advertentie");
-
-            int teller = 1;
-            for (String item : info) {
-                System.out.println(formatOpties(teller, item));
-                teller++;
-            }
-
+            printOpties(opties);
             printPostMenu();
 
             int keuze = scanner.nextInt();
@@ -54,9 +53,22 @@ public class NieuweAdvertentie {
                     levering();
                     break;
                 case 5:
+                    omschrijving();
                     break;
                 case 6:
+                    vraagprijs();
                     break;
+                case 7:
+                    AdvertentieDto advertentie = new AdvertentieDto(titel,
+                            soort,
+                            categorie,
+                            levering,
+                            omschrijvingl,
+                            prijs);
+
+                    break;
+                case 0:
+                    return;
                 default:
                     System.out.println("\nOngeldige keuze");
                     Main.wait(1);
@@ -75,14 +87,10 @@ public class NieuweAdvertentie {
 
     public void soort() {
 
-        printPreMenu(String.format("Huidige keuze: %s", advertentie.getSoort() == null ? "" : advertentie.getSoort().toString().toLowerCase()));
-
         List<String> opties = Arrays.asList("Product", "Dienst");
 
+        printPreMenu(String.format("Huidige keuze: %s", advertentie.getSoort() == null ? "" : advertentie.getSoort().toString().toLowerCase()));
         printOpties(opties);
-
-        System.out.println(formatOpties(0, "Terug"));
-
         printPostMenu();
 
         int keuze = scanner.nextInt();
@@ -105,9 +113,7 @@ public class NieuweAdvertentie {
     public void categorie() {
 
         printPreMenu(String.format("huidige keuze: %s", advertentie.getCategorie() == null ? "" : advertentie.getCategorie().toString().toLowerCase()));
-
         printOpties(Arrays.asList(Categorie.values()));
-
         printPostMenu();
 
         int keuze = scanner.nextInt();
@@ -123,11 +129,9 @@ public class NieuweAdvertentie {
     }
 
     public void levering() {
+
         printPreMenu(String.format("Huidige keuze: %s", advertentie.getLevering() == null ? "" : advertentie.getLevering().toString().toLowerCase()));
-
-
         printOpties(gebruiker.levering());
-
         printPostMenu();
 
         int keuze = scanner.nextInt();
@@ -143,7 +147,21 @@ public class NieuweAdvertentie {
     }
 
     public void omschrijving() {
+        String omschrijving = advertentie.getOmschrijving() == null ? "" : advertentie.getOmschrijving();
 
+
+        System.out.printf("\nOmschrijving (%s): ", omschrijving);
+        omschrijving = scanner.nextLine();
+        if (!omschrijving.isEmpty()) {
+            advertentie.setOmschrijving(omschrijving);
+        }
+    }
+
+    public void vraagprijs() {
+        int prijs = advertentie.getPrijs();
+        System.out.printf("\nPrijs (%s): ", prijs);
+        prijs = scanner.nextInt();
+        advertentie.setPrijs(prijs);
     }
 
 
