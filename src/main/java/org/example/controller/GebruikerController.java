@@ -37,7 +37,7 @@ public class GebruikerController {
     }
 
     private GebruikerDto vanGebruikerNaarDto(Gebruiker gebruiker) {
-        GebruikerDto gebruikerDto = new GebruikerDto(gebruiker.getEmail());
+        GebruikerDto gebruikerDto = new GebruikerDto(gebruiker.getEmail(), gebruiker.getLevering());
         return gebruikerDto;
     }
 

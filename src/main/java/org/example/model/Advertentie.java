@@ -23,7 +23,7 @@ public class Advertentie {
     private String titel;
     private Soort soort;
 
-    private String categorie;
+    private Categorie categorie;
 
     private Levering levering;
 

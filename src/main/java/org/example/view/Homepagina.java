@@ -31,7 +31,7 @@ public class Homepagina {
 
             switch (keuze) {
                 case 1:
-                    NieuweAdvertentie nieuweAdvertentie = new NieuweAdvertentie();
+                    NieuweAdvertentie nieuweAdvertentie = new NieuweAdvertentie(gebruiker);
                     nieuweAdvertentie.nieuweAdvertentie();
                     break;
                 case 2:

@@ -20,7 +20,7 @@ public class Startscherm {
         while (true) {
             System.out.println("""
                         \n\n
-                        WELKOM OP BELASTINGPLAATS    
+                        Welkom op belastingplaats    
                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                     X                               X
                     X   1. Log in                   X
@@ -41,7 +41,7 @@ public class Startscherm {
                     sluitApplicatie();
                     break;
                 default:
-                    System.out.println("\nONGELDIGE KEUZE");
+                    System.out.println("\nOngeldige keuze");
                     Main.wait(1);
 
             }
@@ -49,34 +49,34 @@ public class Startscherm {
     }
 
     public void login() {
-        System.out.printf("\nGEBRUIKERSNAAM: ");
+        System.out.printf("\nGebruikersnaam: ");
         String gebruikersnaam = scanner.next();
         if (gebruikersnaam.equals("x")) {
             return;
         }
-        System.out.printf("\nWACHTWOORD: ");
+        System.out.printf("\nWachtwoord: ");
         String wachtwoord = scanner.next();
 
         gebruiker = controller.getGebruiker(gebruikersnaam);
 
         if (gebruiker == null) {
-            System.out.println("\nGEEN GEBRUIKER GEVONDEN, PROBEER OPNIEUW");
+            System.out.println("\nGeen gebruiker gevonden, probeer opnieuw");
             Main.wait(1);
             login();
         } else if (controller.checkWachtwoord(gebruiker, wachtwoord)) {
-            System.out.printf("\nWELKOM %s", gebruikersnaam);
+            System.out.printf("\nWelkom %s", gebruikersnaam);
             Main.wait(1);
             Homepagina homepagina = new Homepagina(gebruiker);
             homepagina.home();
         } else {
-            System.out.println("\nONJUIST WACHTWOORD, PROBEER OPNIEUW");
+            System.out.println("\nOnjuist wachtwoord, probeer opnieuw");
             Main.wait(1);
             login();
         }
     }
 
     public void sluitApplicatie() {
-        System.out.println("BEDANKT, EN TOT ZIENS!");
+        System.out.println("Bedankt, en tot ziens!");
         System.exit(0);
     }
 }
