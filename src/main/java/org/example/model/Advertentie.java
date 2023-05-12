@@ -1,9 +1,6 @@
 package org.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,10 +18,11 @@ public class Advertentie {
     private Long id;
 
     private String titel;
+    @Enumerated(EnumType.STRING)
     private Soort soort;
-
+    @Enumerated(EnumType.STRING)
     private Categorie categorie;
-
+    @Enumerated(EnumType.STRING)
     private Levering levering;
 
     private String omschrijving;

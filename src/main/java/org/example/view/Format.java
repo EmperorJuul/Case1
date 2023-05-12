@@ -13,7 +13,7 @@ public class Format {
                 """, header);
     }
 
-    public static String formatOpties(int index, String optie) {
+    private static String formatOpties(int index, String optie) {
         String tekst = "X   ";
         tekst += String.format("%d.%-26s", index, optie.toLowerCase());
         tekst += "X";
@@ -21,6 +21,14 @@ public class Format {
     }
 
     public static void printOpties(List opties) {
+        int teller = 1;
+        for (Object item : opties) {
+            System.out.println(formatOpties(teller, item.toString()));
+            teller++;
+        }
+    }
+
+    public static void printOpties(List opties, boolean terugKnop) {
         int teller = 1;
         for (Object item : opties) {
             System.out.println(formatOpties(teller, item.toString()));

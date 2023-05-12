@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.Main;
+import org.example.controller.AdvertentieController;
 import org.example.model.Categorie;
 import org.example.model.Levering;
 import org.example.model.Soort;
@@ -21,7 +22,9 @@ public class NieuweAdvertentie {
     Levering levering;
     String omschrijving;
     int prijs;
+
     GebruikerDto gebruiker;
+    AdvertentieController controller = new AdvertentieController();
 
     public NieuweAdvertentie(GebruikerDto gebruiker) {
         this.gebruiker = gebruiker;
@@ -33,7 +36,7 @@ public class NieuweAdvertentie {
             List<String> opties = Arrays.asList("Titel", "Product/dienst", "Categorie", "Levering", "Omschrijving", "Vraagprijs", "Opslaan");
 
             printPreMenu("Nieuwe advertentie");
-            printOpties(opties);
+            printOpties(opties, true);
             printPostMenu();
 
             int keuze = scanner.nextInt();
@@ -65,9 +68,8 @@ public class NieuweAdvertentie {
                             levering,
                             omschrijving,
                             prijs);
-                    System.out.println(advertentie);
-
-                    break;
+                    controller.save(advertentie);
+                    return;
                 case 0:
                     return;
                 default:
@@ -91,7 +93,7 @@ public class NieuweAdvertentie {
         List<String> opties = Arrays.asList("Product", "Dienst");
 
         printPreMenu(String.format("Huidige keuze: %s", soort == null ? "" : soort.toString().toLowerCase()));
-        printOpties(opties);
+        printOpties(opties, true);
         printPostMenu();
 
         int keuze = scanner.nextInt();
@@ -114,14 +116,16 @@ public class NieuweAdvertentie {
     public void categorie() {
 
         printPreMenu(String.format("huidige keuze: %s", categorie == null ? "" : categorie.toString().toLowerCase()));
-        printOpties(Arrays.asList(Categorie.values()));
+        printOpties(Arrays.asList(Categorie.values()), true);
         printPostMenu();
 
         int keuze = scanner.nextInt();
         scanner.nextLine();
-        if (keuze > Categorie.values().length || keuze < 1) {
+        if (keuze > Categorie.values().length) {
             System.out.println("\nOngeldige keuze");
             Main.wait(1);
+        } else if (keuze == 0) {
+            return;
         } else {
             categorie = Categorie.values()[keuze - 1];
         }
@@ -132,7 +136,7 @@ public class NieuweAdvertentie {
     public void levering() {
 
         printPreMenu(String.format("Huidige keuze: %s", levering == null ? "" : levering.toString().toLowerCase()));
-        printOpties(gebruiker.getLevering());
+        printOpties(gebruiker.getLevering(), true);
         printPostMenu();
 
         int keuze = scanner.nextInt();

@@ -5,8 +5,12 @@ import org.example.controller.GebruikerController;
 import org.example.model.Dao.GebruikerDao;
 import org.example.model.dto.GebruikerDto;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.example.Main.em;
 import static org.example.Main.scanner;
+import static org.example.view.Format.*;
 
 public class Startscherm {
 
@@ -18,18 +22,10 @@ public class Startscherm {
 
     public void start() {
         while (true) {
-            System.out.println("""
-                        \n\n
-                        Welkom op belastingplaats    
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    X                               X
-                    X   1. Log in                   X
-                    X   2. Sluit applicatie         X
-                    X                               X
-                    X                               X
-                    X                               X
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    """);
+            List<String> opties = Arrays.asList("Log in", "Sluit applicatie");
+            printPreMenu("Welkom op Belastingplaats");
+            printOpties(opties);
+            printPostMenu();
 
             int keuze = scanner.nextInt();
 

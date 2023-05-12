@@ -24,11 +24,13 @@ public class Homepagina {
 
             List<String> opties = Arrays.asList("Maak advertentie", "Uitloggen");
 
-            int teller = 1;
-            for (String item : opties) {
-                System.out.println(formatOpties(teller, item));
-                teller++;
-            }
+
+            printOpties(opties);
+//            int teller = 1;
+//            for (String item : opties) {;
+//                System.out.println(formatOpties(teller, item));
+//                teller++;
+//            }
 
             printPostMenu();
 
