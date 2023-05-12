@@ -13,7 +13,7 @@ public class Format {
                 """, header);
     }
 
-    private static String formatOpties(int index, String optie) {
+    public static String formatOpties(int index, String optie) {
         String tekst = "X   ";
         tekst += String.format("%d.%-26s", index, optie.toLowerCase());
         tekst += "X";

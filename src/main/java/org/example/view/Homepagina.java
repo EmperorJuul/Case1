@@ -22,15 +22,10 @@ public class Homepagina {
 
             printPreMenu("Homepagina");
 
-            List<String> opties = Arrays.asList("Maak advertentie", "Uitloggen");
+            List<String> opties = Arrays.asList("Maak advertentie", "Bekijk advertenties", "Uitloggen");
 
 
             printOpties(opties);
-//            int teller = 1;
-//            for (String item : opties) {;
-//                System.out.println(formatOpties(teller, item));
-//                teller++;
-//            }
 
             printPostMenu();
 
@@ -42,6 +37,12 @@ public class Homepagina {
                     nieuweAdvertentie.nieuweAdvertentie();
                     break;
                 case 2:
+                    AdvertentiePagina pagina = new AdvertentiePagina(gebruiker);
+                    pagina.bekijkAdvertenties();
+                    break;
+
+
+                case 3:
                     return;
                 default:
                     System.out.println("ONGELDIGE KEUZE");
