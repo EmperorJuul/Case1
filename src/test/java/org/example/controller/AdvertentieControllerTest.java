@@ -45,7 +45,7 @@ class AdvertentieControllerTest {
                 Categorie.OVERIG,
                 Levering.REMBOURS,
                 "Mooie omschrijving",
-                50);
+                50, false);
 
 
         AdvertentieDto actual = sut.vanAdvertentieNaarDto(advertentie);
@@ -69,7 +69,7 @@ class AdvertentieControllerTest {
                 Categorie.OVERIG,
                 Levering.REMBOURS,
                 "Mooie omschrijving2",
-                50);
+                50, false);
 
         Advertentie actual = sut.vanDtoNaarAdvertentie(dto);
 

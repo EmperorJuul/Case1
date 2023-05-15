@@ -31,25 +31,5 @@ public class Advertentie {
 
     private int prijs;
 
-    @Override
-    public String toString() {
-        String toString = "";
 
-        if (verkocht) {
-            toString += """
-                    XXX VERKOCHT XXX
-                    """;
-        }
-
-        toString += String.format("""
-                Titel: %s
-                Soort: %s
-                Omschrijving: %s
-                Prijs: %d
-                Categorie: %s
-                Levering: %s
-                """, titel, soort, omschrijving, prijs, categorie, levering);
-
-        return toString;
-    }
 }

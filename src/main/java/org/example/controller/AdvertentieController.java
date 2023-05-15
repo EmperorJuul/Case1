@@ -33,6 +33,7 @@ public class AdvertentieController {
         advertentie.setLevering(dto.getLevering());
         advertentie.setOmschrijving(dto.getOmschrijving());
         advertentie.setPrijs(dto.getPrijs());
+        advertentie.setVerkocht(dto.isVerkocht());
         return advertentie;
     }
 
@@ -44,6 +45,7 @@ public class AdvertentieController {
         dto.setLevering(advertentie.getLevering());
         dto.setOmschrijving(advertentie.getOmschrijving());
         dto.setPrijs(advertentie.getPrijs());
+        dto.setVerkocht(advertentie.isVerkocht());
         return dto;
     }
 }

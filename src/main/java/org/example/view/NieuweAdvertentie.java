@@ -67,7 +67,7 @@ public class NieuweAdvertentie {
                             categorie,
                             levering,
                             omschrijving,
-                            prijs);
+                            prijs, false);
                     controller.save(advertentie);
                     return;
                 case 0:
