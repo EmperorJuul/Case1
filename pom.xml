@@ -58,7 +58,13 @@
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>5.3.1</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-parent</artifactId>
+            <version>1.1.10</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 
 </project>

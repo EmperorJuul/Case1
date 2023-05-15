@@ -23,21 +23,6 @@ public class Main {
         Startscherm startscherm = new Startscherm();
         startscherm.start();
 
-//        GebruikerController controller = new GebruikerController();
-//        GebruikerDto gebruiker = controller.getGebruiker("test");
-//
-//
-//        Startscherm startscherm = new Startscherm();
-//        //startscherm.start();
-//
-//        List<Levering> leveringList = Arrays.asList(Levering.AFHALEN, Levering.VERSTUREN);
-//        GebruikerDto gebruikerDto = new GebruikerDto("test", leveringList);
-////        NieuweAdvertentie nieuweAdvertentie = new NieuweAdvertentie(gebruikerDto);
-////        nieuweAdvertentie.nieuweAdvertentie();
-//
-//        Homepagina home = new Homepagina(gebruiker);
-//        home.home();
-
     }
 
     public static void wait(int s) {
