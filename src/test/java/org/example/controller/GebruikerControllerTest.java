@@ -79,7 +79,7 @@ class GebruikerControllerTest {
     @Test
     public void testGebruikerNaarDtoConverter() {
         List<Levering> leveringen = Arrays.asList(Levering.AFHALEN, Levering.VERSTUREN);
-        Gebruiker gebruiker = new Gebruiker("email", "wachtwoord", leveringen);
+        Gebruiker gebruiker = new Gebruiker("email", "wachtwoord", leveringen, null);
         GebruikerDto expected = new GebruikerDto("email", leveringen);
 
         GebruikerDto actual = this.sut.vanGebruikerNaarDto(gebruiker);

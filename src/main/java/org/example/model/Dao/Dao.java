@@ -21,6 +21,12 @@ public abstract class Dao<T, I> {
         return em.find(T(), i);
     }
 
+    public void merge(T t) {
+        transaction.begin();
+        em.merge(t);
+        transaction.commit();
+    }
+
     public void insert(T t) {
         transaction.begin();
         em.persist(t);

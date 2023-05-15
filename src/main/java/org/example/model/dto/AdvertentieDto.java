@@ -1,6 +1,7 @@
 package org.example.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.model.Categorie;
@@ -10,7 +11,10 @@ import org.example.model.Soort;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class AdvertentieDto {
+
+    Long id;
     String titel;
     Soort soort;
     Categorie categorie;
@@ -18,6 +22,7 @@ public class AdvertentieDto {
     String omschrijving;
     int prijs;
     boolean verkocht;
+    String gebruikersnaam;
 
     @Override
     public String toString() {

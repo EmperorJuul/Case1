@@ -62,13 +62,18 @@ public class NieuweAdvertentie {
                     vraagprijs();
                     break;
                 case 7:
-                    AdvertentieDto advertentie = new AdvertentieDto(titel,
-                            soort,
-                            categorie,
-                            levering,
-                            omschrijving,
-                            prijs, false);
+                    AdvertentieDto advertentie = AdvertentieDto.builder()
+                            .titel(titel)
+                            .soort(soort)
+                            .categorie(categorie)
+                            .levering(levering)
+                            .omschrijving(omschrijving)
+                            .prijs(prijs)
+                            .gebruikersnaam(gebruiker.getEmail())
+                            .build();
                     controller.save(advertentie);
+                    System.out.println("Advertentie aangemaakt");
+                    Main.wait(1);
                     return;
                 case 0:
                     return;

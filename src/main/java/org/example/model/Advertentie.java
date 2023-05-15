@@ -31,5 +31,8 @@ public class Advertentie {
 
     private int prijs;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Gebruiker gebruiker;
+
 
 }

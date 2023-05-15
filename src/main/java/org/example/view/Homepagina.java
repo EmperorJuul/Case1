@@ -17,19 +17,24 @@ public class Homepagina {
         this.gebruiker = gebruiker;
     }
 
+
     public void home() {
         while (true) {
 
+            AdvertentiePagina pagina = new AdvertentiePagina(gebruiker);
+
             printPreMenu("Homepagina");
 
-            List<String> opties = Arrays.asList("Maak advertentie", "Bekijk advertenties", "Uitloggen");
+            List<String> opties = Arrays.asList("Maak advertentie", "Bekijk advertenties", "Mijn advertenties");
 
 
             printOpties(opties);
+            System.out.println(formatOpties(0, "Uitloggen"));
 
             printPostMenu();
 
             int keuze = scanner.nextInt();
+
 
             switch (keuze) {
                 case 1:
@@ -37,12 +42,12 @@ public class Homepagina {
                     nieuweAdvertentie.nieuweAdvertentie();
                     break;
                 case 2:
-                    AdvertentiePagina pagina = new AdvertentiePagina(gebruiker);
                     pagina.bekijkAdvertenties();
                     break;
-
-
                 case 3:
+                    pagina.mijnAdvertenties();
+                    break;
+                case 0:
                     return;
                 default:
                     System.out.println("ONGELDIGE KEUZE");
