@@ -41,7 +41,8 @@ public class AdvertentieDto {
                 Prijs: %d
                 Categorie: %s
                 Levering: %s
-                """, titel, soort, omschrijving, prijs, categorie, levering);
+                Aangeboden door: %s
+                """, titel, soort, omschrijving, prijs, categorie, levering, gebruikersnaam);
 
         return toString;
     }
